@@ -416,6 +416,6 @@ return [
                     'codeFold' => true,
                 ]
         ]
-        
+
     ],
 ];

@@ -10,9 +10,9 @@ class HomeController extends Controller
 	//文章首页
 	public function index(){
 
-		$data = Book::get();
+		$data = Book::where('status', 1)->get();
 
-		return view('home',compact('data'));
+		return view('books',compact('data'));
 	}
 
 	//详情

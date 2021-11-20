@@ -1,0 +1,7 @@
+.bk-list li .bk-book .title-stytle{
+    position: relative;
+    top:10px;
+    float:left;
+    color:red;
+    background-color: blue;
+}

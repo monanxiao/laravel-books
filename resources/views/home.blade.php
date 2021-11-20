@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/css/default.css" />
     <!--必要样式-->
     <link rel="stylesheet" type="text/css" href="/css/component.css" />
+    <link rel="stylesheet" type="text/css" href="/css/home.css" />
     <script src="/js/modernizr.custom.js"></script>
 </head>
 <body>
@@ -23,11 +24,14 @@
             @foreach($data as $dv)
                 <li>
                     <div class="bk-book book-1 bk-bookdefault">
+                        <div class="title-stytle">
+                            <span>{{ $dv->name }}</span>
+                        </div>
                         <div class="bk-front">
-                            <div class="bk-cover" style="background-image: url({{ $dv->bkcoversrc }});">
+                            {{-- <div class="bk-cover" style="background-image: url({{ $dv->bkcoversrc }});"> --}}
+                            <div class="bk-cover">
                                 <h2>
-                                    <span>作者 MoNan</span>
-                                    <span>{{ $dv->title }}</span>
+                                    <span>作者 {{ $dv->author }}</span>
                                 </h2>
                             </div>
                             <div class="bk-cover-back"></div>
@@ -49,7 +53,7 @@
                         <div class="bk-right"></div>
                         <div class="bk-left">
                             <h2>
-                                <span>作者 MoNan</span>
+                                <span>作者 {{ $dv->author }}</span>
                                 <span>{{ $dv->name }}</span>
                             </h2>
                         </div>
@@ -60,7 +64,7 @@
                         <button class="bk-bookback">背面</button>
                         <button class="bk-bookview">目录</button>
                         <h3>
-                            <span>作者 MoNan</span>
+                            <span>作者 {{ $dv->author }}</span>
                             <span><a href="{{ route('show',$dv->id) }}"> {{ $dv->name }} </a></span>
                         </h3>
                         <p>{{ $dv->presentation }}</p>

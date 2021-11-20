@@ -30,6 +30,12 @@ class BookController extends AdminController
         $grid->column('name', __('名称'));
         // $grid->column('presentation', __('介绍'));
         $grid->column('cover_src', __('封面'))->image(env('IMG_URL'),50,50);
+        // 设置text、color、和存储值
+        $states = [
+            'on'  => ['value' => 1, 'text' => '开放', 'color' => 'success'],
+            'off' => ['value' => 0, 'text' => '下架', 'color' => 'danger'],
+        ];
+        $grid->column('status', __('开放'))->switch($states);
         $grid->column('created_at', __('创建时间'));
 
         return $grid;
@@ -47,6 +53,14 @@ class BookController extends AdminController
 
         $form->text('name', __('名称'))->setWidth(2, 2);
         $form->textarea('presentation', __('介绍'))->setWidth(3, 2)->rows(10);
+
+        $states = [
+            'on'  => ['value' => 1, 'text' => '开放', 'color' => 'success'],
+            'off' => ['value' => 0, 'text' => '下架', 'color' => 'danger'],
+        ];
+
+        $form->switch('status', __('开放'))->states($states)->default(1);
+
         $form->image('cover_src', __('封面'))->setWidth(3, 2);
 
             // 直接添加一对多的关联模型

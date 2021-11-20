@@ -142,8 +142,8 @@
 	-webkit-transform: rotate3d(0,1,0,-90deg);
 	-moz-transform: rotate3d(0,1,0,-90deg);
 	transform: rotate3d(0,1,0,-90deg);
-	box-shadow:
-		inset 4px 0 5px rgba(255,255,255,0.1),
+	box-shadow: 
+		inset 4px 0 5px rgba(255,255,255,0.1), 
 		inset 5px 0 5px rgba(0,0,0,0.05),
 		inset -5px 0 5px rgba(0,0,0,0.04);;
 }
@@ -197,7 +197,7 @@
 
 .bk-list li .bk-front > div {
 	border-radius: 0 3px 3px 0;
-	box-shadow:
+	box-shadow: 
 		inset 4px 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -307,7 +307,7 @@
 }
 
 .book-1 .bk-cover {
-	background-image: url(../images/1.png);
+	background-image: url(../images/1.png);	
 	background-repeat: no-repeat;
 	background-position: 10px 40px;
 }
@@ -338,7 +338,7 @@
 .book-1 .bk-cover h2 span:last-child,
 .book-1 .bk-left h2 span:last-child {
 	font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
-}
+} 
 
 .book-1 .bk-content p {
 	font-family: Georgia, Times, "Times New Roman", serif;
@@ -370,12 +370,12 @@
 }
 
 .book-2 .bk-cover {
-	background-image: url(../images/2.png);
+	background-image: url(../images/2.png);	
 	background-repeat: no-repeat;
 	background-position: 98% 0%;
 }
 
-.book-2 .bk-cover h2,
+.book-2 .bk-cover h2, 
 .book-2 .bk-left h2 {
 	color: #fff;
 	font-family: 'the_godfatherregular', Georgia, serif;
@@ -457,7 +457,7 @@
 }
 
 .book-3 .bk-cover {
-	background-image: url(../images/3.png);
+	background-image: url(../images/3.png);	
 	background-repeat: no-repeat;
 	background-position: 100% 95%;
 }
@@ -488,7 +488,7 @@
 .book-3 .bk-left h2 span:last-child,
 .book-3 .bk-content p  {
 	font-family: Georgia, Times, "Times New Roman", serif;
-}
+} 
 
 .book-3 .bk-left h2 {
 	color: #fff;
