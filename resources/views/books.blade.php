@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>我的书店</title>
 		<link rel="stylesheet" href="/css/bootstrap.min.css" >
+		<link rel="stylesheet" href="/css/home.css" >
 	</head>
 
 	<body>
@@ -26,7 +27,7 @@
                     @foreach($data as $dv)
                         <div class="col p-2">
                             <div class="card content">
-                                <img src="{{ $dv->bkcoversrc }}" class="card-img-top" alt="...">
+                                <img src="{{ $dv->bkcoversrc }}" class="card-img-top border-bottom border-info mb-2" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $dv->name }}</h5>
                                     <p class="card-text">{{ $dv->presentation }}</p>
