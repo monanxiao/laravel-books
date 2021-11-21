@@ -5,3 +5,11 @@
     color:red;
     background-color: blue;
 }
+
+.content img{
+    height:230px;
+}
+
+.content .card-body{
+    height:200px;
+}

@@ -25,7 +25,7 @@
 
                     @foreach($data as $dv)
                         <div class="col p-2">
-                            <div class="card">
+                            <div class="card content">
                                 <img src="{{ $dv->bkcoversrc }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $dv->name }}</h5>
@@ -63,8 +63,6 @@
 		</main>
 
 	</body>
-
-
 
 	<script src="/js/jquery-3.6.0.min.js" ></script>
 	<script src="/js/popper.js" ></script>
