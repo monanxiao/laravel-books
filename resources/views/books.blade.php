@@ -27,11 +27,16 @@
                     @foreach($data as $dv)
                         <div class="col p-2">
                             <div class="card content">
-                                <img src="{{ $dv->bkcoversrc }}" class="card-img-top border-bottom border-info mb-2" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $dv->name }}</h5>
-                                    <p class="card-text">{{ $dv->presentation }}</p>
-                                    <a href="{{ route('show',$dv->id) }}" class="btn btn-primary">开始阅读</a>
+                                <a href="{{ route('show',$dv->id) }}">
+                                    <img src="{{ $dv->bkcoversrc }}" class="card-img-top border-bottom border-info" alt="...">
+                                </a>
+                                <div class="card-body pb-0">
+                                    <div class="card-title border-bottom border-success pb-2">
+                                        <span class="float-left text-secondary">{{ $dv->name }}</span>
+                                        <span class="float-right text-muted pt-2">Auth：{{ $dv->author }}</span>
+                                    </div>
+                                    <p class="card-text text-justify presentation">{{ $dv->presentation }}</p>
+                                    <a href="{{ route('show',$dv->id) }}" class="btn btn-primary mb-2">开始阅读</a>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +47,8 @@
 			</div>
 
 			<div class="container p-4">
-				<nav aria-label="Page navigation example">
+                {{ $data->links() }}
+				{{-- <nav aria-label="Page navigation example">
 				  <ul class="pagination">
 				    <li class="page-item">
 				      <a class="page-link" href="#" aria-label="Previous">
@@ -58,7 +64,7 @@
 				      </a>
 				    </li>
 				  </ul>
-				</nav>
+				</nav> --}}
 			</div>
 
 		</main>

@@ -17,6 +17,8 @@ class CreateBooksTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->comment('书名');
             $table->string('presentation')->comment('介绍');
+            $table->text('describe')->comment('描述');
+            $table->integer('flow')->default(0)->comment('阅读人数');
             $table->string('cover_src')->comment('封面');
             $table->timestamps();
         });

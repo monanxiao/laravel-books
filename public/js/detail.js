@@ -33,7 +33,7 @@ function chapter(bookId){
         $(icon_hide).data('icon',1);
         $(icon_show).data('icon',0);
     }
-    
+
 }
 
  //章节选中事件

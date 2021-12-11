@@ -10,7 +10,7 @@ class HomeController extends Controller
 	//文章首页
 	public function index(){
 
-		$data = Book::where('status', 1)->get();
+		$data = Book::where('status', 1)->paginate(8);
 
 		return view('books',compact('data'));
 	}

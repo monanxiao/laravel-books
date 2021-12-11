@@ -14,6 +14,23 @@ use App\Models\Article;
 |
 */
 
+
+
+Route::prefix('v1')->name('api.v1.')->namespace('Api')->group(function() {
+
+    /**
+     * 书籍接口
+     * index 列表
+     * show 详情
+     */
+    Route::resource('books', 'BooksController')->only([
+        'index', 'show'
+    ]);
+
+});
+
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
