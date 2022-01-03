@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chapter extends Model
 {
+
     // 批量赋值白名单
     protected $fillable = [
         'name', 'serial_number'
@@ -16,7 +17,6 @@ class Chapter extends Model
     {
     	return $this->belongsTo(Book::class, 'book_id');
     }
-
 
     // 拥有文章
     public function article(){

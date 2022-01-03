@@ -22,8 +22,13 @@ class BooksController extends Controller
      */
     public function show(Book $book)
     {
-        $books = $book->with('chapter')->paginate();
+        // $books = $book;
 
-        return BooksResource::collection($books);
+        // $books = [
+        //     'books' => $book,
+        //     'chapter' => $book->chapter
+        // ];
+
+        // return BooksResource::collection($books);
     }
 }

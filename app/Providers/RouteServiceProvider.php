@@ -77,4 +77,13 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
     }
+
+    /**
+     * 登录成功后，重定向
+     *
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        return redirect('admin');
+    }
 }
