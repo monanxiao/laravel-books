@@ -59,6 +59,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
     Route::get('books', 'BooksController@index')->name('books');
     Route::post('books', 'BooksController@store');
     Route::patch('books/{book}', 'BooksController@update')->name('books.update');
+
     /**
      * 书籍 状态切换
      */
@@ -68,6 +69,24 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
      * 章节
      */
     Route::get('chapter', 'ChaptersController@index')->name('chapter');
+    /**
+     * 接收章节数据
+     */
+    Route::post('chapter', 'ChaptersController@store')->name('chapter');
+    /**
+     * 更新章节数据
+     */
+    Route::patch('chapter/{chapter}', 'ChaptersController@update')->name('chapter.update');
+    /**
+     * 章节状态切换
+     */
+    Route::get('chapter/{chapter}/{status}', 'ChaptersController@status_update')->name('chapter.status');
+
+
+    /**
+     * 文章创建
+     */
+    Route::get('article/{chapter}', 'ArticleController@create')->name('article');
 
     /**
      * 公告

@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="/vendor/linearicons/style.css">
 	<link rel="stylesheet" href="/vendor/chartist/css/chartist-custom.css">
     <link rel="stylesheet" href="/vendor/toastr/toastr.min.css">
+    <link rel="stylesheet" href="/editormd/css/editormd.css" />
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="/css/main.css">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
@@ -57,6 +58,14 @@
     <script src="/vendor/toastr/toastr.min.js"></script>
 	<script src="/scripts/klorofil-common.js"></script>
     <script src="/js/bootstrap-fileinput.js"></script>
+    <script src="/editormd/editormd.js"></script>
+    <script src="/editormd/lib/marked.min.js"></script>
+    <script src="/editormd/lib/prettify.min.js"></script>
+    <script src="/editormd/lib/raphael.min.js"></script>
+    <script src="/editormd/lib/underscore.min.js"></script>
+    <script src="/editormd/lib/sequence-diagram.min.js"></script>
+    <script src="/editormd/lib/flowchart.min.js"></script>
+    <script src="/editormd/lib/jquery.flowchart.min.js"></script>
     @if (count($errors) > 0)
 
         @foreach($errors->all() as $error)

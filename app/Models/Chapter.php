@@ -9,7 +9,7 @@ class Chapter extends Model
 
     // 批量赋值白名单
     protected $fillable = [
-        'name', 'serial_number'
+        'name', 'serial_number', 'book_id'
     ];
 
     // 每章节都属于一本书

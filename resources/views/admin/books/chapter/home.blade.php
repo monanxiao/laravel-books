@@ -1,6 +1,24 @@
 @extends('admin.layouts.app')
 @section('title', '章节管理')
+@section('style')
+<style>
+    ul.activity-list > li{
+        position: relative;
+    }
 
+    .edit_articles{
+        position: absolute;
+        top: 50%;
+        transform: translate3d(0,-50%,0);
+        left: 1.5rem;
+    }
+
+    .panel .panel-heading button i{
+        font-size: 18px !important;
+    }
+
+</style>
+@endsection
 @section('content')
 
 <!-- MAIN CONTENT -->
@@ -9,49 +27,75 @@
 
         <div class="row">
 
-            <div class="col-md-5">
-                <!-- TIMELINE -->
-                <div class="panel panel-scrolling">
+            <div class="col-md-12">
+                <!-- BUTTONS -->
+                <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">书名</h3>
-                        <div class="right">
-                            <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-                            <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-                        </div>
-                    </div>
+						<h3 class="panel-title">章节</h3>
+					</div>
                     <div class="panel-body">
-
-                        <button type="button" class="btn btn-primary btn-bottom center-block">章节名称</button>
-
-                        <ul class="list-unstyled activity-list">
-                            <li>
-                                <img src="img/user1.png" alt="Avatar" class="img-circle pull-left avatar">
-                                <p><a href="#">Michael</a> has achieved 80% of his completed tasks <span class="timestamp">20 minutes ago</span></p>
-                            </li>
-                            <li>
-                                <img src="img/user2.png" alt="Avatar" class="img-circle pull-left avatar">
-                                <p><a href="#">Daniel</a> has been added as a team member to project <a href="#">System Update</a> <span class="timestamp">Yesterday</span></p>
-                            </li>
-                            <li>
-                                <img src="img/user3.png" alt="Avatar" class="img-circle pull-left avatar">
-                                <p><a href="#">Martha</a> created a new heatmap view <a href="#">Landing Page</a> <span class="timestamp">2 days ago</span></p>
-                            </li>
-                            <li>
-                                <img src="img/user4.png" alt="Avatar" class="img-circle pull-left avatar">
-                                <p><a href="#">Jane</a> has completed all of the tasks <span class="timestamp">2 days ago</span></p>
-                            </li>
-                            <li>
-                                <img src="img/user5.png" alt="Avatar" class="img-circle pull-left avatar">
-                                <p><a href="#">Jason</a> started a discussion about <a href="#">Weekly Meeting</a> <span class="timestamp">3 days ago</span></p>
-                            </li>
-                        </ul>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addChapterModal" data-whatever="@mdo">
+                            <i class="fa fa-plus-square"></i> 新章
+                        </button>
                     </div>
                 </div>
-                <!-- END TIMELINE -->
-            </div>
-        </div>
+                <!-- END BUTTONS -->
+			</div>
 
+            <!-- TIMELINE -->
+            @foreach($result as $rv)
+                <div class="col-md-3">
+                    <div class="panel panel-scrolling">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ $rv->books->name }}</h3>
+                            <div class="right">
+                                <button type="button" class="btn-remove">
+                                    <a href="{{ route('admin.article', $rv) }}"><i class="lnr lnr-file-add"></i></a>
+                                </button>
+                                <button type="button" class="btn-remove">
+                                    <a href="{{ route('admin.chapter.status', [$rv, 'status']) }}">
+                                        <i class="lnr lnr-power-switch {{ $rv->status ? 'text-success' : 'text-danger' }}"></i>
+                                    </a>
+                                </button>
+                                <button type="button" class="btn-remove" data-toggle="modal" data-target="#editChapterModal" data-whatever="@mdo"><i class="lnr lnr-cog"></i></button>
+                                <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+
+                            <button type="button" class="btn btn-primary btn-bottom center-block">{{ $rv->name }}</button>
+
+                            <ul class="list-unstyled activity-list">
+
+                                @foreach($rv->article as $av)
+                                    <li>
+                                        {{-- <img src="img/user1.png" alt="Avatar" class="img-circle pull-left avatar"> --}}
+                                        <span class="edit_articles">
+                                            <i class="lnr lnr-pencil"></i>
+                                        </span>
+                                        <p>
+                                            {{ $av->title }} <i class="lnr lnr-eye"></i>
+                                            <span class="timestamp">{{ $av->updated_at }}</span>
+                                        </p>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @include('admin.books.chapter._edit_chapter')
+                    </div>
+                </div>
+            @endforeach
+            <!-- END TIMELINE -->
+        </div>
     </div>
 </div>
 <!-- END MAIN CONTENT -->
+@endsection
+
+@section('script')
+    @include('admin.books.chapter._add_chapter')
+
+    <script>
+
+    </script>
 @endsection
