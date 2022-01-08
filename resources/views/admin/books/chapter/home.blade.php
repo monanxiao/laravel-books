@@ -17,6 +17,11 @@
         font-size: 18px !important;
     }
 
+    .btn-delete{
+        border: 0px;
+        background-color: transparent;
+    }
+
 </style>
 @endsection
 @section('content')
@@ -50,7 +55,7 @@
                             <h3 class="panel-title">{{ $rv->books->name }}</h3>
                             <div class="right">
                                 <button type="button" class="btn-remove">
-                                    <a href="{{ route('admin.article', $rv) }}"><i class="lnr lnr-file-add"></i></a>
+                                    <a href="{{ route('admin.article.create', $rv) }}"><i class="lnr lnr-file-add"></i></a>
                                 </button>
                                 <button type="button" class="btn-remove">
                                     <a href="{{ route('admin.chapter.status', [$rv, 'status']) }}">
@@ -71,10 +76,16 @@
                                     <li>
                                         {{-- <img src="img/user1.png" alt="Avatar" class="img-circle pull-left avatar"> --}}
                                         <span class="edit_articles">
-                                            <i class="lnr lnr-pencil"></i>
+                                            <form action="{{ route('admin.article.destroy', $av) }}" method="post"
+                                                onsubmit="return confirm('您确定要删除吗？');">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button class="lnr lnr-trash text-danger btn-delete"></button>
+                                            </form>
                                         </span>
                                         <p>
-                                            {{ $av->title }} <i class="lnr lnr-eye"></i>
+                                            <a href="{{ route('admin.article.edit', $av) }}" class="text-info">{{ $av->title }}</a>
+                                            <span class="text-muted">{{ $av->flow }}</span>
                                             <span class="timestamp">{{ $av->updated_at }}</span>
                                         </p>
                                     </li>
@@ -96,6 +107,12 @@
     @include('admin.books.chapter._add_chapter')
 
     <script>
-
+    function validate() {
+        if (confirm("提交表单?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     </script>
 @endsection

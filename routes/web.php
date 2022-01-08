@@ -72,7 +72,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
     /**
      * 接收章节数据
      */
-    Route::post('chapter', 'ChaptersController@store')->name('chapter');
+    Route::post('chapter', 'ChaptersController@store');
     /**
      * 更新章节数据
      */
@@ -82,17 +82,36 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
      */
     Route::get('chapter/{chapter}/{status}', 'ChaptersController@status_update')->name('chapter.status');
 
-
     /**
      * 文章创建
      */
-    Route::get('article/{chapter}', 'ArticleController@create')->name('article');
+    Route::get('article/create/{chapter}', 'ArticleController@create')->name('article.create');
+
+    /**
+     * 接收文章数据
+     */
+    Route::post('article', 'ArticleController@store')->name('article.store');
+
+    /**
+     * 编辑文章
+     *
+     */
+    Route::get('article/{article}/edit', 'ArticleController@edit')->name('article.edit');
+    /**
+     * 更新文章数据
+     */
+    Route::patch('article/{article}', 'ArticleController@update')->name('article.update');
+
+    /**
+     * 删除文章数据
+     */
+    Route::delete('article/{article}', 'ArticleController@destroy')->name('article.destroy');
 
     /**
      * 公告
      *
      */
-    Route::resource('notices', 'NoticesController');
+    Route::resource('notices', NoticesController::class);
 
     /**
      * 日志
@@ -104,7 +123,8 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
      * 来访记录
      *
      */
-    Route::resource('visitors', 'VisitorsController');
+    Route::resource('visitors', VisitorsController::class)
+        ->only(['index']);
 
     /**
      * 系统设置

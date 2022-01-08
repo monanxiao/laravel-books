@@ -12,25 +12,25 @@
                 <div class="col-md-12">
                     <!-- RECENT PURCHASES -->
                     <div class="panel">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Recent Purchases</h3>
-                            <div class="right">
-                                <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-                                <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-                            </div>
+                        <div class="panel-body">
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addBooksModal" data-whatever="@mdo">
+                                <i class="fa fa-plus-square"></i> 公告
+                            </button>
                         </div>
                         <div class="panel-body no-padding">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Order No.</th>
-                                        <th>Name</th>
-                                        <th>Amount</th>
-                                        <th>Date &amp; Time</th>
-                                        <th>Status</th>
+                                        <th>标题</th>
+                                        <th>名称</th>
+                                        <th>类别</th>
+                                        <th>级别</th>
+                                        <th>状态</th>
+                                        <th>发布时间</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     <tr>
                                         <td><a href="#">763648</a></td>
                                         <td>Steve</td>
@@ -38,6 +38,7 @@
                                         <td>Oct 21, 2016</td>
                                         <td><span class="label label-success">COMPLETED</span></td>
                                     </tr>
+
                                     <tr>
                                         <td><a href="#">763649</a></td>
                                         <td>Amber</td>

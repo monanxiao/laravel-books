@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
 	<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.min.css" >
     <link rel="stylesheet" href="/css/bootstrap-fileinput.css">
 	<link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/vendor/linearicons/style.css">
@@ -51,6 +52,7 @@
 
 	<!-- Javascript -->
 	<script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/js/jquery.datetimepicker.full.min.js"></script>
 	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>

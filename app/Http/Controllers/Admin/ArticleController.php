@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Chapter;
+use App\Models\Article;
+use App\Http\Requests\Admin\ArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -34,9 +36,16 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request, Article $article)
     {
-        //
+
+        /**
+         * 过滤对应字段数据
+         */
+        $article->fill($request->all());
+        $article->save();// 数据保存
+
+        return redirect()->route('admin.chapter')->with('success', '章节增加成功！');
     }
 
     /**
@@ -56,9 +65,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        return view('admin.books.article.edit', compact('article'));
     }
 
     /**
@@ -68,9 +77,11 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, Article $article)
     {
         //
+        $article->update($request->all());
+        return redirect()->route('admin.chapter')->with('success', '章节更新成功！');
     }
 
     /**
@@ -79,8 +90,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        return back()->with('danger', '删除成功！');
     }
 }

@@ -28,18 +28,18 @@
                 <!-- INPUTS -->
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">《{{ $chapter->books->name }}》 > {{ $chapter->name }} > 新建文章</h3>
+                        <h3 class="panel-title">《{{ $article->chapter->books->name }}》 > {{ $article->chapter->name }} > 编辑文章</h3>
                     </div>
 
-                    <form action="{{ route('admin.article.store') }}" method="POST">
+                    <form action="{{ route('admin.article.update', $article) }}" method="POST">
                         {{ csrf_field() }}
-                        <input type="hidden" name="chapter_id" value="{{ $chapter->id }}">
+                        {{ method_field('PATCH') }}
                         <div class="panel-body">
 
                             <div class="row issue">
                                 <div class="form-group col-md-4">
                                     <label for="recipient-name" class="col-form-label">文章名称</label>
-                                    <input type="text" class="form-control" name="title" value="{{ old('name') }}" placeholder="请输入标题">
+                                    <input type="text" class="form-control" name="title" value="{{ $article->title }}" placeholder="请输入标题">
                                 </div>
                                 <button type="submit" class="btn btn-success">
                                     <i class="lnr lnr-location"></i>
@@ -49,25 +49,18 @@
                             <div class="row">
                                 <div class="form-group col-md-2">
                                     <label for="recipient-name" class="col-form-label">发布时间</label>
-                                    <input id="datetimepicker" type="text" class="form-control" name="issue_time" value="{{ old('issue_time') }}">
+                                    <input id="datetimepicker" type="text" class="form-control" name="issue_time" value="{{ $article->issue_time }}">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="recipient-name" class="col-form-label">文章排序</label>
-                                    <input type="text" class="form-control" name="serial_number" value="0">
+                                    <input type="text" class="form-control" name="serial_number" value="{{ $article->serial_number }}">
                                 </div>
                             </div>
 
                             <div class="row h-100 d-inline-block">
                                 <div class="form-group col-md-12">
                                     <div id='content-editor'>
-                                        <textarea name="content" class="form-control">##  发行说明
- 《{{ $chapter->books->name }}》本课程由墨楠的Books发布,每周一至周五不间断更新。
- 本书适合`程序员新手、程序员技术加固、互联网从业者`让更多人了解或加入程序员行业。
-
-本书《{{ $chapter->books->name }}》版权归作者墨楠所有。
-本书受版权法保护，任何组织或个人不得以任何形式分发、修改、或者商业使用。
-
->当你在学习中有任何疑问都可以加入我们官方群：[145439629](https://jq.qq.com/?_wv=1027&k=6Z4eR3lS "145439629") 寻求帮助。</textarea>
+                                        <textarea name="content" class="form-control">{{ $article->content }}</textarea>
                                     </div>
                                 </div>
                             </div>
