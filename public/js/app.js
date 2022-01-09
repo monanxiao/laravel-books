@@ -37270,6 +37270,18 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$('.collapsed').click(function (event) {
+  var list = $(event.currentTarget).attr('aria-expanded');
+
+  if (list == 'true') {
+    $(event.currentTarget).removeClass('bi-caret-down');
+    $(event.currentTarget).addClass('bi-caret-right');
+  } else {
+    $(event.currentTarget).removeClass('bi-caret-right');
+    $(event.currentTarget).addClass('bi-caret-down');
+  }
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

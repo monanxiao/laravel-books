@@ -12,8 +12,23 @@
 */
 
 
-//文章首页
+// 书店首页
 Route::get('/','HomeController@index');
+
+
+Route::prefix('web')->namespace('Web')->name('web.')->group(function() {
+
+    /**
+     * 书籍详情
+    */
+    Route::resource('books', BooksController::class)->only(['show']);
+
+    /**
+     * 章节详情
+     */
+    Route::resource('article', ArticleController::class)->only(['show']);
+});
+
 
 //edit 编辑
 Route::get('edit','HomeController@create');
