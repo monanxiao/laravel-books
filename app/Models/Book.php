@@ -25,6 +25,6 @@ class Book extends Model
             return $this->attributes['cover_src'];
         }
 
-        return url($this->attributes['cover_src']);
+        return env('IMG_URL') . $this->attributes['cover_src'];
     }
 }

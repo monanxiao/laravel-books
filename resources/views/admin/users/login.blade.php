@@ -51,14 +51,12 @@
                                 @include('admin.message._errors')
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">邮箱</label>
-									<input type="email" name="email" class="form-control" id="signin-email" value="monanxiao@qq.com" placeholder="Email">
-									{{-- <input type="email" name="email" class="form-control" id="signin-email" value="{{ old('email') }}" placeholder="Email"> --}}
+									<input type="email" name="email" class="form-control" id="signin-email" value="{{ old('email') }}" placeholder="Email">
 								</div>
 
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">密码</label>
-									<input type="password" name="password" class="form-control" id="signin-password" value="123456" placeholder="Password">
-									{{-- <input type="password" name="password" class="form-control" id="signin-password" value="{{ old('password') }}" placeholder="Password"> --}}
+									<input type="password" name="password" class="form-control" id="signin-password" value="{{ old('password') }}" placeholder="Password">
 								</div>
 
 								<div class="form-group clearfix">
