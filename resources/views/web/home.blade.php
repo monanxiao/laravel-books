@@ -11,14 +11,14 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="/images/banner-1.png" class="d-block w-100" alt="...">
+            <img src="/img/banner1.jpg" class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item">
+            {{-- <div class="carousel-item">
             <img src="/images/banner-2.png" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
             <img src="/images/banner-3.jpg" class="d-block w-100" alt="...">
-            </div>
+            </div> --}}
         </div>
         <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -37,7 +37,9 @@
 
                 <div class="col-3 mt-4">
                     <div class="card">
-                        <img src="{{ $item->cover_src }}" class="card-img-top border-bottom" alt="{{ $item->name }}">
+                        <a href="{{ route('web.books.show', $item) }}">
+                            <img src="{{ $item->cover_src }}" class="card-img-top border-bottom" alt="{{ $item->name }}">
+                        </a>
                         <div class="card-body position-relative pb-5">
                             <h5 class="card-title">{{ $item->name }}</h5>
                             <p class="card-text">{{ $item->describe }}</p>
