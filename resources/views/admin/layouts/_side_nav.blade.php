@@ -33,6 +33,12 @@
 								<span>公告</span>
 							</a>
 						</li>
+                        <li>
+							<a href="{{ route('admin.banner.index') }}" class="{{ active_class(if_route('admin.banner.index')) }}">
+								<i class="lnr lnr-picture"></i>
+								<span>轮播图</span>
+							</a>
+						</li>
 						<li>
 							<a href="{{ route('admin.logs.index') }}" class="{{ active_class(if_route('admin.logs.index')) }}">
 								<i class="lnr lnr-drop"></i>

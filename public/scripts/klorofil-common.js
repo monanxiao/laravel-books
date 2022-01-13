@@ -78,6 +78,14 @@ $(document).ready(function() {
         $(modal).modal('show');
 	});
 
+    // 打开模态框
+    $('.panel .btn-banner-edit').click(function (e) {
+        e.preventDefault();
+        var booksid = $(this).attr('data-banner');
+        var modal = '#editBannerModal' + booksid;
+        $(modal).modal('show');
+    });
+
 	// panel collapse/expand
 	var affectedElement = $('.panel-body');
 

@@ -27,6 +27,24 @@ Route::prefix('web')->namespace('Web')->name('web.')->group(function() {
      * 章节详情
      */
     Route::resource('article', ArticleController::class)->only(['show']);
+
+    /**
+     * 公告通知
+     *
+     */
+    Route::resource('notices', NoticesController::class);
+
+    /**
+     * 帮助中心
+     */
+    Route::resource('help', HelpController::class);
+
+    /**
+     * 留言
+     *
+     */
+    Route::resource('messages', MessagesController::class);
+
 });
 
 
@@ -127,6 +145,11 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
      *
      */
     Route::resource('notices', NoticesController::class);
+
+    /**
+     * 轮播图
+     */
+    Route::resource('banner', BannersController::class);
 
     /**
      * 日志

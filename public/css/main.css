@@ -1170,8 +1170,8 @@ ul.activity-list > li {
     background-color: rgba(0, 0, 0, 0.2); }
   .profile-header .profile-main {
     position: relative;
-    padding: 20px;
-    background-image: url("/img/profile-bg.png");
+    /* padding: 20px; */
+    /* background-image: url("/img/profile-bg.png"); */
     background-repeat: no-repeat;
     background-size: cover; }
     .profile-header .img-circle{
