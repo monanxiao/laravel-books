@@ -144,12 +144,12 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
      * 公告
      *
      */
-    Route::resource('notices', NoticesController::class);
+    Route::resource('notices', 'NoticesController');
 
     /**
      * 轮播图
      */
-    Route::resource('banner', BannersController::class);
+    Route::resource('banner', 'BannersController');
 
     /**
      * 日志
@@ -161,7 +161,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
      * 来访记录
      *
      */
-    Route::resource('visitors', VisitorsController::class)
+    Route::resource('visitors', 'VisitorsController')
         ->only(['index']);
 
     /**

@@ -23,7 +23,7 @@ class NoticesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.notices.add');
     }
 
     /**

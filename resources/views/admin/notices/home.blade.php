@@ -13,9 +13,9 @@
                     <!-- RECENT PURCHASES -->
                     <div class="panel">
                         <div class="panel-body">
-                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addBooksModal" data-whatever="@mdo">
+                            <a href="{{ route('admin.notices.create') }}" class="btn btn-default">
                                 <i class="fa fa-plus-square"></i> 公告
-                            </button>
+                            </a>
                         </div>
                         <div class="panel-body no-padding">
                             <table class="table table-striped">

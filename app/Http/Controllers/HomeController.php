@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Banner;
 
 class HomeController extends Controller
 {
     /**
      * 首页
     */
-    public function index(Book $books) {
+    public function index(Book $books, Banner $banner) {
 
         $result = $books->get();
+        $banners = $banner->get();
 
-        return view('web.home', compact('result'));
+        return view('web.home', compact('result', 'banners'));
     }
 
 

@@ -10,15 +10,13 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="/img/banner1.jpg" class="d-block w-100" alt="...">
-            </div>
-            {{-- <div class="carousel-item">
-            <img src="/images/banner-2.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-            <img src="/images/banner-3.jpg" class="d-block w-100" alt="...">
-            </div> --}}
+            @foreach ($banners as $bv)
+                <div class="carousel-item @if($loop->index == 0) active @endif">
+                    <a href="{{ $bv->link }}">
+                        <img src="{{ $bv->src_img }}" class="d-block w-100" alt="{{ $bv->title }}">
+                    </a>
+                </div>
+            @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

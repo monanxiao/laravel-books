@@ -8,7 +8,7 @@ use App\Models\Banner;
 use Illuminate\Support\Facades\Storage;
 use  Illuminate\Support\Str;
 
-class bannersController extends Controller
+class BannersController extends Controller
 {
     /**
      * 轮播图
