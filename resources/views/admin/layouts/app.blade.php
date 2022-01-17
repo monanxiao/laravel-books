@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="/vendor/chartist/css/chartist-custom.css">
     <link rel="stylesheet" href="/vendor/toastr/toastr.min.css">
     <link rel="stylesheet" href="/editormd/css/editormd.css" />
+    <link rel="stylesheet" href="/simditor-2.3.28/css/simditor.css" />
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="/css/main.css">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
@@ -68,6 +69,10 @@
     <script src="/editormd/lib/sequence-diagram.min.js"></script>
     <script src="/editormd/lib/flowchart.min.js"></script>
     <script src="/editormd/lib/jquery.flowchart.min.js"></script>
+    <script type="text/javascript" src="/simditor-2.3.28/js/module.js"></script>
+    <script type="text/javascript" src="/simditor-2.3.28/js/hotkeys.js"></script>
+    <script type="text/javascript" src="/simditor-2.3.28/js/uploader.js"></script>
+    <script type="text/javascript" src="/simditor-2.3.28/js/simditor.js"></script>
     @if (count($errors) > 0)
 
         @foreach($errors->all() as $error)

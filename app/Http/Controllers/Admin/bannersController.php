@@ -10,6 +10,11 @@ use  Illuminate\Support\Str;
 
 class BannersController extends Controller
 {
+    public function __construct() {
+
+        $this->middleware('auth');
+    }
+
     /**
      * 轮播图
      *

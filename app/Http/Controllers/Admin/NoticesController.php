@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\NoticesRequest;
+use App\Models\Notice;
 
 class NoticesController extends Controller
 {
@@ -11,9 +13,11 @@ class NoticesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Notice $notice)
     {
-        return view('admin.notices.home');
+        $notice = $notice->get();
+
+        return view('admin.notices.home', compact('notice'));
     }
 
     /**
@@ -32,9 +36,12 @@ class NoticesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NoticesRequest $request, Notice $notice)
     {
-        //
+        $notice->fill($request->all());
+        $notice->save();
+
+        return redirect()->route('admin.notices.index')->with('success', '公告发布成功！');
     }
 
     /**
@@ -54,9 +61,9 @@ class NoticesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Notice $notice)
     {
-        //
+        return view('admin.notices.edit', compact('notice'));
     }
 
     /**
@@ -66,9 +73,11 @@ class NoticesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NoticesRequest $request, Notice $notice)
     {
-        //
+        $notice->fill($request->all());
+        $notice->save();
+        return redirect()->route('admin.notices.index')->with('success', '公告更新成功！');
     }
 
     /**
@@ -77,8 +86,9 @@ class NoticesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Notice $notice)
     {
-        //
+        $notice->delete();
+        return back()->with('danger', '删除成功！');
     }
 }

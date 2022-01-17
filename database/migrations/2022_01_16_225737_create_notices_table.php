@@ -18,6 +18,7 @@ class CreateNoticesTable extends Migration
             $table->string('title')->comment('公告标题');
             $table->longText('content')->comment('公告内容');
             $table->integer('level')->default(0)->comment('公告级别');
+            $table->timestamp('issue_time')->nullable()->comment('发布时间');
             $table->timestamps();
         });
     }
