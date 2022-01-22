@@ -23,9 +23,27 @@ class UsersRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'email' => 'required|email|exists:users,email',
-            'password' => 'required|min:6',
-        ];
+        switch ($this->method())
+        {
+            case 'PATCH':
+                return [
+                    // 'email' => 'nullable|email:rfc,dns|unique:users,email',
+                    'image' => 'nullable|image',
+                    'name' => 'required|string',
+                    'old_password' => 'nullable|min:6|required_with:new_password',
+                    'new_password' => 'nullable|min:6|confirmed|required_with:old_password',
+                    'new_password_confirmation' => 'nullable|min:6|required_with:new_password|same:new_password',
+                ];
+                break;
+
+            case 'POST':
+                return [
+                    'email' => 'required|email|exists:users,email',
+                    'password' => 'required|min:6',
+                ];
+
+        }
+
+
     }
 }

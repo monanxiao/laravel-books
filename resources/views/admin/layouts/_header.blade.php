@@ -54,7 +54,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                         <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-                        <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                        <li><a href="{{ route('admin.users.edit', Auth::user() ) }}"><i class="lnr lnr-cog"></i> <span>设置</span></a></li>
                         <li>
                             <form action="{{ route('admin.logout') }}" method="POST">
                                 {{ csrf_field() }}

@@ -80,6 +80,8 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
     Route::get('login', 'UsersController@index')->name('login');
     Route::post('login', 'UsersController@store');
     Route::delete('logout', 'UsersController@destroy')->name('logout');
+    Route::get('login/{user}', 'UsersController@edit')->name('users.edit');
+    Route::patch('login/{user}', 'UsersController@update')->name('users.update');
 
     /**
      * 消息
@@ -169,6 +171,11 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
      *
      */
     Route::resource('system', 'SystemController');
+
+    /**
+     * 管理员设置
+     */
+    Route::resource('password', 'AdminController');
 
 });
 

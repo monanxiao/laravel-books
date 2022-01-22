@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Illuminate\Http\Request;
 use App\Http\Requests\Admin\UsersRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use  Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -15,6 +15,63 @@ class UsersController extends Controller
     public function index() {
 
         return view('admin.users.login');
+    }
+
+    /**
+     * 编辑用户
+     */
+    public function edit(User $user)
+    {
+        return view('admin.users.edit', compact('user'));
+    }
+
+    /**
+     * 更新数据
+     */
+    public function update(User $user, UsersRequest $request)
+    {
+        /**
+         * 获取提交字段
+         */
+        $user->fill($request->all());
+
+        /**
+         * 验证密码是否修改
+         */
+        if(!empty($request->old_password))
+        {
+            if(Auth::attempt(['email' => $user->email, 'password' => $request->old_password]))
+            {
+                $user->password = bcrypt($request->new_password);// 新密码
+
+            }else{
+                return back()->with('success', '旧密码错误，修改失败！');
+            }
+        }
+
+        /**
+         * 验证头像是否为空
+         */
+        if(!empty($request->uploadImage)) {
+            $file = $request->file('uploadImage');// 文件
+            $extension = $file->getClientOriginalExtension();// 文件后缀
+            $folder_name = "/uploads/avatar/" . date("Ym/d", time());// 文件路径
+            // 拼接文件名，加前缀是为了增加辨析度，前缀可以是相关数据模型的 ID
+            $filename = 'cover_' . time() . '_' . Str::random(10) . '.' . $extension;
+            // 图片上传
+            $request->file('uploadImage')->storeAs(
+                'public' . $folder_name, $filename
+            );
+            // 文件路径
+            $path = 'storage' . $folder_name . '/' . $filename;
+            // 保存头像
+            $user->avatar = $path;
+        }
+
+        $user->save();
+
+        return back()->with('success', '修改成功！');
+
     }
 
     /**
