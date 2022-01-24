@@ -36,7 +36,7 @@
                 <div class="col-3 mt-4">
                     <div class="card">
                         <a href="{{ route('web.books.show', $item) }}">
-                            <img src="{{ $item->cover_src }}" class="card-img-top border-bottom" alt="{{ $item->name }}">
+                            <img src="{{ $item->cover_src }}" class="card-img-top border-bottom p-2" alt="{{ $item->name }}">
                         </a>
                         <div class="card-body position-relative pb-5">
                             <h5 class="card-title">{{ $item->name }}</h5>

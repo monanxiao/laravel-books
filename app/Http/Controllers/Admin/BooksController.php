@@ -20,7 +20,7 @@ class BooksController extends Controller
      */
     public function index(Book $book) {
 
-        $books = $book->withCount('chapter')->get();
+        $books = $book->withCount('chapter')->orderBy('updated_at', 'desc')->get();
 
         return view('admin.books.home', compact('books'));
     }

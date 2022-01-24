@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Book;
-use App\Http\Requests\admin\ChapterRequest;
+use App\Http\Requests\Admin\ChapterRequest;
 
 class ChaptersController extends Controller
 {
@@ -20,7 +20,7 @@ class ChaptersController extends Controller
     public function index(Chapter $chapters) {
 
         // 取出章节数据
-        $result = $chapters->with(['books', 'article'])->get();
+        $result = $chapters->with(['books', 'article'])->orderBy('updated_at', 'desc')->get();
         $books = Book::where('status', '1')->get();
 
         return view('admin.books.chapter.home', compact('result', 'books'));

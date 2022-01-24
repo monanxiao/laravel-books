@@ -18,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'App\Events\BooksVisit' => [ // 书店访问统计
+            'App\Listeners\BooksVisitLog',
+        ],
     ];
 
     /**

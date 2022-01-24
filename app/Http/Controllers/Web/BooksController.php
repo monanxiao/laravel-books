@@ -8,7 +8,7 @@ use App\Models\Book;
 class BooksController extends Controller
 {
     /**
-     * 书记详情
+     * 书籍详情
      */
     public function show(Book $book) {
 

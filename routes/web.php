@@ -63,7 +63,6 @@ Route::post('create','HomeController@store')->name('create');
  *
 */
 
-
 Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
 
     /**
