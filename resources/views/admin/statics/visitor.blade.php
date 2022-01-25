@@ -17,20 +17,18 @@
                             <li>
                                 <p>
                                     <span class="title">{{ $item->page }}</span>
-                                    <span class="short-description">{{ $item->area }}</span>
-                                    <span class="date">{{ $item->visitor }}, {{ $item->created_at }}</span>
+                                    <span class="short-description">
+                                        {{
+                                            $item->area['ad_info']['nation'] . ' ' . $item->area['ad_info']['province'] . ' ' .
+                                            $item->area['ad_info']['city'] . ' ' .
+                                            $item->area['ad_info']['district'] . ' ' .'邮编：' .
+                                            $item->area['ad_info']['adcode']
+                                        }}
+                                    </span>
+                                    <span class="date">{{ $item->visitor }}, 时间：{{ $item->created_at }}</span>
                                 </p>
                             </li>
                         @endforeach
-
-
-                        <li>
-                            <p>
-                                <span class="title">页面</span>
-                                <span class="short-description">地区</span>
-                                <span class="date">192.168.1.1, 2021-01-08 12:01:02</span>
-                            </p>
-                        </li>
 
                     </ul>
                 </div>

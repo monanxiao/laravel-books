@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Jobs\Web\BooksChapterLook;
 
 class ArticleController extends Controller
 {
@@ -44,8 +45,17 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show(Article $article, Request $request)
     {
+        /**
+         * 加入队列记录 5秒后执行记录访问书籍章节
+         */
+        $result = ['article' => $article , 'server' => $request->server()];
+
+        BooksChapterLook::dispatch($result)
+                    ->delay(now()->now()->addSeconds(5))
+                    ->onQueue('bookChapterook');
+
         return view('web.books.content', compact('article'));
     }
 

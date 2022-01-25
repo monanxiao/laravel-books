@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Models\Visitors;
+
+/**
+ * 访问日志
+ *
+ */
 
 class LogsController extends Controller
 {
@@ -11,10 +17,12 @@ class LogsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Visitors $visitors)
     {
-        //
-        return view('admin.statics.log');
+        // 访问记录
+        $result = $visitors->orderBy('created_at', 'desc')->get();
+
+        return view('admin.statics.log', compact('result'));
     }
 
     /**

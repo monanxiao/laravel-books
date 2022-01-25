@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    use Traits\BooksChapterLookTraits;
+
     protected $fillable = ['title', 'issue_time', 'serial_number', 'content', 'chapter_id'];
 
     // 文章所属章节 一对多

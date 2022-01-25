@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Jobs\Web\BooksChapterLook;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +43,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('article/{article}',function(Article $article){
+Route::get('article/{article}',function(Article $article, Request $request){
+
+    /**
+     * 加入队列记录 5秒后执行记录访问书籍章节
+     */
+    $result = ['article' => $article , 'server' => $request->server()];
+
+    BooksChapterLook::dispatch($result)
+                ->delay(now()->now()->addSeconds(5))
+                ->onQueue('bookChapterook');
 
 	return $article->content;
 

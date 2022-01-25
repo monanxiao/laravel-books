@@ -6,23 +6,31 @@ use Illuminate\Support\Facades\Redis;
 use Carbon\Carbon;
 use App\Models\Visitors;
 use GuzzleHttp\Client;
-use Log;
 
-trait VisitorTraits
+/**
+ * 书籍访问记录
+ */
+
+trait BooksLookTraits
 {
     /**
-     * 获取 ip 地区等信息并且记录
+     * 记录日志
+     * $book 书籍信息 ip 来源ip page 页面
+     *
      */
-    public function visitorStore($result)
-    {
+    public function BookLogStore($result){
+
+        $server = $result['server'];// 来访信息
+        $book = $result['book'];// 书籍信息
 
         /**
          * 入库数据
          */
         $data = [
-            'visitor' => $result['REMOTE_ADDR'],// ip 地址
-            'page' => $result['REQUEST_URI'],// 访问页面
-            'type' => 'home', // 类型 首页
+            'visitor' => $server['REMOTE_ADDR'],// ip 地址
+            'page' => $server['REQUEST_URI'],// 访问页面
+            'link_id' => $book->id,// 关联id
+            'type' => 'book', // 类型 书籍
             'created_at' => date('Y-m-d H:i:s'),// 来访时间
         ];
 
@@ -30,20 +38,20 @@ trait VisitorTraits
 
         $visitors->fill($data);
 
-        $address = $this->ipAddress($result['REMOTE_ADDR']);// 获取地区
+        $address = $this->ipAddress($server['REMOTE_ADDR']);// 获取地区
 
         // 地区不为空的话
         if(!empty($address) && $address['status'] != 382) {
             $visitors->area = $address['result'];
 
         }else{
-            $visitors->area = $result['REMOTE_ADDR'];
+            $visitors->area = $server['REMOTE_ADDR'];
         }
 
         /**
          * 来访 IP 是否存在
         */
-        if($time = $visitors->whereDate('created_at', date('Y-m-d'))->where('visitor', $result['REMOTE_ADDR'])->count()) {
+        if($time = $visitors->whereDate('created_at', date('Y-m-d'))->where('visitor', $server['REMOTE_ADDR'])->count()) {
 
             $visitors->time = $time + 1;// 如果存在 则来访次数 +1
 

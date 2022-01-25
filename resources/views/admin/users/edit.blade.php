@@ -54,17 +54,17 @@
                                 <br>
                                 <div class="input-group">
                                     <span class="input-group-addon">原密码</span>
-                                    <input type="password" name="old_password" class="form-control" placeholder="请输入原密码">
+                                    <input type="password" name="old_password" autocomplete="new-password"  class="form-control" placeholder="请输入原密码">
                                 </div>
                                 <br>
                                 <div class="input-group">
                                     <span class="input-group-addon">输入新密码</span>
-                                    <input type="password" name="new_password" class="form-control" placeholder="留空则不修改">
+                                    <input type="password" name="new_password" autocomplete="new-password"  class="form-control" placeholder="留空则不修改">
                                 </div>
                                 <br>
                                 <div class="input-group">
                                     <span class="input-group-addon">确认新密码</span>
-                                    <input type="password" name="new_password_confirmation" class="form-control" placeholder="请再次输入新密码">
+                                    <input type="password" name="new_password_confirmation" autocomplete="new-password"  class="form-control" placeholder="请再次输入新密码">
                                 </div>
                                 <br>
                                 <p class="demo-button text-center">

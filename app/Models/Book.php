@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 
 class Book extends Model
 {
+    use Traits\BooksLookTraits;
 
     protected $fillable = ['status', 'name', 'author', 'describe', 'cover_src'];
 
