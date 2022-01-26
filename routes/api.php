@@ -35,6 +35,12 @@ Route::prefix('v1')->name('api.v1.')->namespace('Api')->group(function() {
     Route::resource('chapters', 'ChaptersContrller')->only([
         'index', 'show'
     ]);
+
+    /**
+     * 编辑器图片上传
+     */
+    Route::post('upload', 'UploadController@images');
+
 });
 
 
