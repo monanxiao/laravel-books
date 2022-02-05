@@ -1,34 +1,32 @@
-@foreach (['danger', 'warning', 'success', 'info'] as $msg)
-  @if(session()->has($msg))
+ @foreach (['danger', 'warning', 'success', 'info'] as $error)
+    @if(session()->has($error))
+        <script>
+            $(function() {
+                var msgcss = '{{ $error }}';
+                var msg = '{{ session()->get($error) }}';
+                if(msg != 0){
 
-    <script>
-        $(function() {
+                    // 消息提醒
+                    toastr.options = {
+                        closeButton: false,
+                        debug: false,
+                        progressBar: true,
+                        positionClass: "toast-top-center",
+                        onclick: null,
+                        showDuration: "300",
+                        hideDuration: "1000",
+                        timeOut: "2000",
+                        extendedTimeOut: "1000",
+                        showEasing: "swing",
+                        hideEasing: "linear",
+                        showMethod: "fadeIn",
+                        hideMethod: "fadeOut"
+                    };
 
-            var msg = '{{ session()->get($msg) ?? 0 }}';
-            var nickname = '{{ Auth::user()->name }}';
-            if(msg != 0){
+                    toastr[msgcss](msg);
+                }
 
-                // 消息提醒
-                toastr.options = {
-                    closeButton: false,
-                    debug: false,
-                    progressBar: true,
-                    positionClass: "toast-top-center",
-                    onclick: null,
-                    showDuration: "300",
-                    hideDuration: "1000",
-                    timeOut: "2000",
-                    extendedTimeOut: "1000",
-                    showEasing: "swing",
-                    hideEasing: "linear",
-                    showMethod: "fadeIn",
-                    hideMethod: "fadeOut"
-                };
-
-                toastr.success(msg);
-            }
-
-        })
-    </script>
-  @endif
+            })
+        </script>
+    @endif
 @endforeach

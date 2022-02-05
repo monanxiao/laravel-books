@@ -169,7 +169,10 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
      * 系统设置
      *
      */
-    Route::resource('system', 'SystemController');
+    Route::get('system', 'SystemController@index')->name('system.index');
+    // 更新数据
+    Route::patch('system', 'SystemController@update')->name('system.update');
+    // Route::resource('system', 'SystemController');
 
     /**
      * 管理员设置

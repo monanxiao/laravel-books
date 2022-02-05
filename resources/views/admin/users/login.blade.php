@@ -16,7 +16,6 @@
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="/css/demo.css">
 	<!-- GOOGLE FONTS -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
@@ -76,7 +75,7 @@
 						<div class="overlay"></div>
 						<div class="content text">
 							<h1 class="heading">欢迎回家！</h1>
-							<p>墨楠的书店</p>
+							<p>{{ cache('web_name') }}</p>
 						</div>
 					</div>
 					<div class="clearfix"></div>
@@ -85,6 +84,42 @@
 		</div>
 	</div>
 	<!-- END WRAPPER -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/toastr/toastr.min.js"></script>
+
+    @foreach (['danger', 'warning', 'success', 'info'] as $error)
+        @if(session()->has($error))
+            <script>
+                $(function() {
+                    var msgcss = '{{ $error }}';
+                    var msg = '{{ session()->get($error) }}';
+                    if(msg != 0){
+
+                        // 消息提醒
+                        toastr.options = {
+                            closeButton: false,
+                            debug: false,
+                            progressBar: true,
+                            positionClass: "toast-top-center",
+                            onclick: null,
+                            showDuration: "300",
+                            hideDuration: "1000",
+                            timeOut: "2000",
+                            extendedTimeOut: "1000",
+                            showEasing: "swing",
+                            hideEasing: "linear",
+                            showMethod: "fadeIn",
+                            hideMethod: "fadeOut"
+                        };
+
+                        toastr[msgcss](msg);
+                    }
+
+                })
+            </script>
+        @endif
+    @endforeach
+
 </body>
 
 </html>

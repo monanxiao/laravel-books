@@ -93,16 +93,11 @@ class UsersController extends Controller
          */
         if(Auth::attempt($user, $request->has('remember'))) {
 
-            // 通过验证
-            session()->flash('success', '欢迎回来！');
-
-            return redirect('admin');
+            return redirect('admin')->with('success', '欢迎回来！');
 
         }else{
 
-            // 验证失败
-            session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
-            return redirect()->back()->withInput();
+            return back()->with('warning', '很抱歉，您的邮箱和密码不匹配');
         }
 
 

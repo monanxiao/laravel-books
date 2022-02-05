@@ -9,6 +9,16 @@ use Log;
 
 class UploadController extends Controller
 {
+    /**
+     * 百度网盘回调
+     *
+     */
+    public function bddisk(Request $request) {
+
+        Log::info($request->all());
+    }
+
+
     // 编辑器图片上传
     public function images(Request $request) {
 
