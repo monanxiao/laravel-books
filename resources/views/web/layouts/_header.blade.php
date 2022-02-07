@@ -11,7 +11,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('web.notices.index') }}">公告</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('web.news.index') }}">文章</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

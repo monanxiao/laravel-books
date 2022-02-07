@@ -75,6 +75,7 @@
     <script type="text/javascript" src="/simditor-2.3.28/js/uploader.js"></script>
     <script type="text/javascript" src="/simditor-2.3.28/js/simditor.js"></script>
     @include('admin.message._message')
+    @include('admin.message._errors')
     @yield('script')
 	<script>
 	$(function() {

@@ -34,6 +34,22 @@
 							</a>
 						</li>
                         <li>
+                            <a href="#newsPages" data-toggle="collapse" class="collapsed">
+                                <i class="fa fa-newspaper-o"></i> <span>资讯</span>
+                                <i class="icon-submenu lnr lnr-chevron-left"></i>
+                            </a>
+							<div id="newsPages" class="collapse ">
+								<ul class="nav">
+									<li>
+                                        <a href="{{ route('admin.news.index') }}" class="{{ active_class(if_route('admin.news.index')) }}">文章列表</a>
+                                    </li>
+									<li>
+                                        <a href="{{ route('admin.newscategory.index') }}" class="{{ active_class(if_route('admin.newscategory.index')) }}">栏目分类</a>
+                                    </li>
+								</ul>
+							</div>
+                        </li>
+                        <li>
 							<a href="{{ route('admin.banner.index') }}" class="{{ active_class(if_route('admin.banner.index')) }}">
 								<i class="lnr lnr-picture"></i>
 								<span>轮播图</span>

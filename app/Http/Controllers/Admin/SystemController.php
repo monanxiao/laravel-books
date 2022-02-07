@@ -9,6 +9,11 @@ use  Illuminate\Support\Str;
 
 class SystemController extends Controller
 {
+    public function __construct() {
+
+        $this->middleware('auth');
+    }
+
     /**
      * 网站设置
      *

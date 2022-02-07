@@ -35,6 +35,12 @@ Route::prefix('web')->namespace('Web')->name('web.')->group(function() {
     Route::resource('notices', NoticesController::class);
 
     /**
+     * 资讯-新闻
+     *
+     */
+    Route::resource('news', NewsController::class);
+
+    /**
      * 帮助中心
      */
     Route::resource('help', HelpController::class);
@@ -146,6 +152,18 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
      *
      */
     Route::resource('notices', 'NoticesController');
+
+    /**
+     * 资讯
+     *
+     */
+    Route::resource('news', 'NewsController');
+
+    /**
+     * 栏目分类（资讯）
+     *
+     */
+    Route::resource('newscategory', 'NewsCategoryController');
 
     /**
      * 轮播图

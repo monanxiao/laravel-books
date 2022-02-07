@@ -27,7 +27,13 @@
 
         .auth-box .left{
             text-align: left;
+            float: right;
         }
+
+        .auth-box .right{
+            float: left;
+        }
+
     </style>
 </head>
 
