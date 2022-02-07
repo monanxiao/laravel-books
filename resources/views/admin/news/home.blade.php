@@ -51,24 +51,30 @@
                                             <td>
                                                 <a href="#">{{ $nv->title }}</a>
                                             </td>
+                                            <td>{{ $nv->category->name }}</td>
                                             <td>
-                                                @switch($nv->level)
+                                                @switch($nv->type)
                                                     @case(0)
                                                         <span class="text-dark">普通</span>
                                                         @break
                                                     @case(1)
-                                                        <span class="text-warning">通知</span>
+                                                        <span class="text-warning">图文</span>
                                                         @break
                                                     @case(2)
-                                                        <span class="text-danger">紧急</span>
+                                                        <span class="text-danger">多图</span>
+                                                        @break
+                                                    @case(3)
+                                                        <span class="text-danger">视频</span>
                                                         @break
                                                 @endswitch
                                             </td>
+                                            <td>{{ $nv->author }}</td>
+                                            <td>{{ $nv->time }}</td>
                                             <td>{{ $nv->issue_time }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('admin.notices.edit', $nv) }}"><span class="lnr lnr-pencil">编辑</span></a>
+                                                <a href="{{ route('admin.news.edit', $nv) }}"><span class="lnr lnr-pencil">编辑</span></a>
 
-                                                <form action="{{ route('admin.notices.destroy', $nv) }}" method="post"
+                                                <form action="{{ route('admin.news.destroy', $nv) }}" method="post"
                                                 onsubmit="return confirm('您确定要删除吗？');">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
